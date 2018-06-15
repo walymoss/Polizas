@@ -1,0 +1,12 @@
+E:\Polizas\GAP.Polizas.AccesoDatos\bin\Release\GAP.Polizas.AccesoDatos.dll.config
+E:\Polizas\GAP.Polizas.AccesoDatos\bin\Release\GAP.Polizas.AccesoDatos.dll
+E:\Polizas\GAP.Polizas.AccesoDatos\bin\Release\GAP.Polizas.AccesoDatos.pdb
+E:\Polizas\GAP.Polizas.AccesoDatos\bin\Release\EntityFramework.dll
+E:\Polizas\GAP.Polizas.AccesoDatos\bin\Release\EntityFramework.SqlServer.dll
+E:\Polizas\GAP.Polizas.AccesoDatos\bin\Release\GAP.Polizas.Modelo.dll
+E:\Polizas\GAP.Polizas.AccesoDatos\bin\Release\GAP.Polizas.Modelo.pdb
+E:\Polizas\GAP.Polizas.AccesoDatos\bin\Release\EntityFramework.xml
+E:\Polizas\GAP.Polizas.AccesoDatos\bin\Release\EntityFramework.SqlServer.xml
+E:\Polizas\GAP.Polizas.AccesoDatos\obj\Release\GAP.Polizas.AccesoDatos.csprojResolveAssemblyReference.cache
+E:\Polizas\GAP.Polizas.AccesoDatos\obj\Release\GAP.Polizas.AccesoDatos.dll
+E:\Polizas\GAP.Polizas.AccesoDatos\obj\Release\GAP.Polizas.AccesoDatos.pdb

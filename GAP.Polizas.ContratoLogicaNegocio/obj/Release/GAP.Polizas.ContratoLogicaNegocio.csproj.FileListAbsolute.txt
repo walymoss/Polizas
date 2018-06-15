@@ -1,0 +1,7 @@
+E:\Polizas\GAP.Polizas.ContratoLogicaNegocio\bin\Release\GAP.Polizas.ContratoLogicaNegocio.dll
+E:\Polizas\GAP.Polizas.ContratoLogicaNegocio\bin\Release\GAP.Polizas.ContratoLogicaNegocio.pdb
+E:\Polizas\GAP.Polizas.ContratoLogicaNegocio\bin\Release\GAP.Polizas.Modelo.dll
+E:\Polizas\GAP.Polizas.ContratoLogicaNegocio\bin\Release\GAP.Polizas.Modelo.pdb
+E:\Polizas\GAP.Polizas.ContratoLogicaNegocio\obj\Release\GAP.Polizas.ContratoLogicaNegocio.csprojResolveAssemblyReference.cache
+E:\Polizas\GAP.Polizas.ContratoLogicaNegocio\obj\Release\GAP.Polizas.ContratoLogicaNegocio.dll
+E:\Polizas\GAP.Polizas.ContratoLogicaNegocio\obj\Release\GAP.Polizas.ContratoLogicaNegocio.pdb

@@ -1,0 +1,4 @@
+E:\Polizas\GAP.Polizas.Modelo\bin\Release\GAP.Polizas.Modelo.dll
+E:\Polizas\GAP.Polizas.Modelo\bin\Release\GAP.Polizas.Modelo.pdb
+E:\Polizas\GAP.Polizas.Modelo\obj\Release\GAP.Polizas.Modelo.dll
+E:\Polizas\GAP.Polizas.Modelo\obj\Release\GAP.Polizas.Modelo.pdb

@@ -1,0 +1,17 @@
+E:\Polizas\GAP.Polizas.LogicaNegocio\obj\Debug\GAP.Polizas.LogicaNegocio.csprojResolveAssemblyReference.cache
+E:\Polizas\GAP.Polizas.LogicaNegocio\bin\Debug\GAP.Polizas.LogicaNegocio.dll.config
+E:\Polizas\GAP.Polizas.LogicaNegocio\bin\Debug\GAP.Polizas.LogicaNegocio.dll
+E:\Polizas\GAP.Polizas.LogicaNegocio\bin\Debug\GAP.Polizas.LogicaNegocio.pdb
+E:\Polizas\GAP.Polizas.LogicaNegocio\bin\Debug\EntityFramework.dll
+E:\Polizas\GAP.Polizas.LogicaNegocio\bin\Debug\EntityFramework.SqlServer.dll
+E:\Polizas\GAP.Polizas.LogicaNegocio\bin\Debug\GAP.Polizas.AccesoDatos.dll
+E:\Polizas\GAP.Polizas.LogicaNegocio\bin\Debug\GAP.Polizas.ContratoLogicaNegocio.dll
+E:\Polizas\GAP.Polizas.LogicaNegocio\bin\Debug\GAP.Polizas.Modelo.dll
+E:\Polizas\GAP.Polizas.LogicaNegocio\bin\Debug\GAP.Polizas.AccesoDatos.pdb
+E:\Polizas\GAP.Polizas.LogicaNegocio\bin\Debug\GAP.Polizas.AccesoDatos.dll.config
+E:\Polizas\GAP.Polizas.LogicaNegocio\bin\Debug\GAP.Polizas.ContratoLogicaNegocio.pdb
+E:\Polizas\GAP.Polizas.LogicaNegocio\bin\Debug\GAP.Polizas.Modelo.pdb
+E:\Polizas\GAP.Polizas.LogicaNegocio\bin\Debug\EntityFramework.xml
+E:\Polizas\GAP.Polizas.LogicaNegocio\bin\Debug\EntityFramework.SqlServer.xml
+E:\Polizas\GAP.Polizas.LogicaNegocio\obj\Debug\GAP.Polizas.LogicaNegocio.dll
+E:\Polizas\GAP.Polizas.LogicaNegocio\obj\Debug\GAP.Polizas.LogicaNegocio.pdb
