@@ -7,4 +7,3 @@ E:\Polizas\GAP.Polizas.Modelo\bin\Debug\EntityFramework.xml
 E:\Polizas\GAP.Polizas.Modelo\bin\Debug\EntityFramework.SqlServer.xml
 E:\Polizas\GAP.Polizas.Modelo\obj\Debug\GAP.Polizas.Modelo.dll
 E:\Polizas\GAP.Polizas.Modelo\obj\Debug\GAP.Polizas.Modelo.pdb
-E:\Polizas\GAP.Polizas.Modelo\obj\Debug\GAP.Polizas.Modelo.csprojResolveAssemblyReference.cache

@@ -29,5 +29,13 @@ namespace GAP.Polizas.WebAPI.Models
         {
             return new ApplicationDbContext();
         }
+
+        public System.Data.Entity.DbSet<GAP.Polizas.Modelo.Poliza> Polizas { get; set; }
+
+        public System.Data.Entity.DbSet<GAP.Polizas.Modelo.Cliente> Clientes { get; set; }
+
+        public System.Data.Entity.DbSet<GAP.Polizas.Modelo.TiposCubrimiento> TiposCubrimiento { get; set; }
+
+        public System.Data.Entity.DbSet<GAP.Polizas.Modelo.TiposRiesgo> TiposRiesgo { get; set; }
     }
 }

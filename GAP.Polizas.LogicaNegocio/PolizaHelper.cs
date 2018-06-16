@@ -20,21 +20,33 @@ namespace GAP.Polizas.LogicaNegocio
             var polizas = contexto.polizas;
             if (polizas != null)
             {
-                foreach (var poliza in polizas)
+                try
                 {
-                    Poliza pol = new Poliza();
-                    pol.Cobertura = poliza.Cobertura;
-                    pol.Descripcion = poliza.Descripcion;
-                    pol.IdPoliza = poliza.IdPoliza;
-                    pol.InicioVigencia = poliza.InicioVigencia;
-                    pol.Nombre = poliza.Nombre;
-                    pol.Precio = poliza.Precio;
-                    pol.IdCliente = poliza.IdCliente;
-                    pol.IdTipoCubrimiento = poliza.IdTipoCubrimiento;
-                    pol.IdTipoRiesgo = poliza.IdTipoRiesgo;
-                    pol.Precio = poliza.Precio;
-                    listaPolizas.Add(pol);
+                    foreach (var poliza in polizas)
+                    {
+                        Poliza pol = new Poliza();
+                        pol.Cobertura = poliza.Cobertura;
+                        pol.Descripcion = poliza.Descripcion;
+                        pol.IdPoliza = poliza.IdPoliza;
+                        pol.InicioVigencia = poliza.InicioVigencia;
+                        pol.Nombre = poliza.Nombre;
+                        pol.Precio = poliza.Precio;
+                        pol.PeriodoCobertura = poliza.PeriodoCobertura;
+                        pol.IdCliente = poliza.IdCliente;
+                        pol.IdTipoCubrimiento = poliza.IdTipoCubrimiento;
+                        pol.IdTipoRiesgo = poliza.IdTipoRiesgo;
+                        pol.Precio = poliza.Precio;
+                        pol.Cliente = poliza.Cliente;
+                        pol.TiposCubrimiento = poliza.TiposCubrimiento;
+                        pol.TiposRiesgo = poliza.TiposRiesgo;
+                        listaPolizas.Add(pol);
+                    }
                 }
+                catch (System.Exception ex)
+                {
+                    throw ex;
+                }
+                
             }
             return listaPolizas;
         }

@@ -12,7 +12,8 @@ namespace GAP.Polizas.Modelo
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
-    
+    using System.Data.Entity.ModelConfiguration.Conventions;
+
     public partial class GAPPolizasEntities1 : DbContext
     {
         public GAPPolizasEntities1()
@@ -22,13 +23,18 @@ namespace GAP.Polizas.Modelo
     
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
-            throw new UnintentionalCodeFirstException();
+            modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
         }
     
         public virtual DbSet<Cliente> Clientes { get; set; }
         public virtual DbSet<Poliza> Polizas { get; set; }
         public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
-        public virtual DbSet<TiposCubrimiento> TiposCubrimientoes { get; set; }
-        public virtual DbSet<TiposRiesgo> TiposRiesgoes { get; set; }
+        public virtual DbSet<TiposCubrimiento> TiposCubrimiento { get; set; }
+        public virtual DbSet<TiposRiesgo> TiposRiesgo { get; set; }
+        public virtual DbSet<C__MigrationHistory> C__MigrationHistory { get; set; }
+        public virtual DbSet<AspNetRoles> AspNetRoles { get; set; }
+        public virtual DbSet<AspNetUserClaims> AspNetUserClaims { get; set; }
+        public virtual DbSet<AspNetUserLogins> AspNetUserLogins { get; set; }
+        public virtual DbSet<AspNetUsers> AspNetUsers { get; set; }
     }
 }

@@ -11,21 +11,19 @@ namespace GAP.Polizas.Modelo
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
-
-    public partial class TiposCubrimiento
+    
+    public partial class AspNetRoles
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public TiposCubrimiento()
+        public AspNetRoles()
         {
-            this.Polizas = new HashSet<Poliza>();
+            this.AspNetUsers = new HashSet<AspNetUsers>();
         }
-
-        [Key]
-        public int IdTipoCubrimiento { get; set; }
-        public string TipoCubrimiento { get; set; }
+    
+        public string Id { get; set; }
+        public string Name { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Poliza> Polizas { get; set; }
+        public virtual ICollection<AspNetUsers> AspNetUsers { get; set; }
     }
 }

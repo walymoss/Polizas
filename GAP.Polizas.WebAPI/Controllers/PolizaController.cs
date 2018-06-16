@@ -43,7 +43,7 @@ namespace GAP.Polizas.WebAPI.Controllers
                 return Request.CreateResponse(HttpStatusCode.BadRequest, "Error");
             }
         }
-        [Authorize]
+        
         [HttpGet]
         [Route("consultarPolizas")]
         public async Task<HttpResponseMessage> ConsultarPolizas()

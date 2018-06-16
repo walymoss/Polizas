@@ -20,7 +20,8 @@ namespace GAP.Polizas.Modelo
         {
             this.Polizas = new HashSet<Poliza>();
         }
-    [Key]
+
+        [Key]
         public int IdTipoRiesgo { get; set; }
         public string TipoRiesgo { get; set; }
     
