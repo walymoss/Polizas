@@ -1,0 +1,104 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="GAPPolizasModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Clientes">
+    <Key>
+      <PropertyRef Name="IdCliente" />
+    </Key>
+    <Property Name="IdCliente" Type="int" Nullable="false" />
+    <Property Name="Nombre" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Polizas">
+    <Key>
+      <PropertyRef Name="IdPoliza" />
+    </Key>
+    <Property Name="IdPoliza" Type="int" Nullable="false" />
+    <Property Name="Nombre" Type="varchar" MaxLength="50" />
+    <Property Name="Descripcion" Type="varchar" MaxLength="50" />
+    <Property Name="InicioVigencia" Type="date" />
+    <Property Name="PeriodoCobertura" Type="int" />
+    <Property Name="Precio" Type="money" />
+    <Property Name="Cobertura" Type="numeric" Precision="18" Scale="0" />
+    <Property Name="IdTipoCubrimiento" Type="int" />
+    <Property Name="IdCliente" Type="int" />
+    <Property Name="IdTipoRiesgo" Type="int" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <EntityType Name="TiposCubrimiento">
+    <Key>
+      <PropertyRef Name="IdTipoCubrimiento" />
+    </Key>
+    <Property Name="IdTipoCubrimiento" Type="int" Nullable="false" />
+    <Property Name="TipoCubrimiento" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="TiposRiesgo">
+    <Key>
+      <PropertyRef Name="IdTipoRiesgo" />
+    </Key>
+    <Property Name="IdTipoRiesgo" Type="int" Nullable="false" />
+    <Property Name="TipoRiesgo" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <Association Name="FK_Polizas_Clientes">
+    <End Role="Clientes" Type="Self.Clientes" Multiplicity="0..1" />
+    <End Role="Polizas" Type="Self.Polizas" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Clientes">
+        <PropertyRef Name="IdCliente" />
+      </Principal>
+      <Dependent Role="Polizas">
+        <PropertyRef Name="IdCliente" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Polizas_TipoCubrimiento">
+    <End Role="TiposCubrimiento" Type="Self.TiposCubrimiento" Multiplicity="0..1" />
+    <End Role="Polizas" Type="Self.Polizas" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TiposCubrimiento">
+        <PropertyRef Name="IdTipoCubrimiento" />
+      </Principal>
+      <Dependent Role="Polizas">
+        <PropertyRef Name="IdTipoCubrimiento" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Polizas_TipoRiesgo">
+    <End Role="TiposRiesgo" Type="Self.TiposRiesgo" Multiplicity="0..1" />
+    <End Role="Polizas" Type="Self.Polizas" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TiposRiesgo">
+        <PropertyRef Name="IdTipoRiesgo" />
+      </Principal>
+      <Dependent Role="Polizas">
+        <PropertyRef Name="IdTipoRiesgo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="GAPPolizasModelStoreContainer">
+    <EntitySet Name="Clientes" EntityType="Self.Clientes" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Polizas" EntityType="Self.Polizas" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TiposCubrimiento" EntityType="Self.TiposCubrimiento" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TiposRiesgo" EntityType="Self.TiposRiesgo" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_Polizas_Clientes" Association="Self.FK_Polizas_Clientes">
+      <End Role="Clientes" EntitySet="Clientes" />
+      <End Role="Polizas" EntitySet="Polizas" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Polizas_TipoCubrimiento" Association="Self.FK_Polizas_TipoCubrimiento">
+      <End Role="TiposCubrimiento" EntitySet="TiposCubrimiento" />
+      <End Role="Polizas" EntitySet="Polizas" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Polizas_TipoRiesgo" Association="Self.FK_Polizas_TipoRiesgo">
+      <End Role="TiposRiesgo" EntitySet="TiposRiesgo" />
+      <End Role="Polizas" EntitySet="Polizas" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

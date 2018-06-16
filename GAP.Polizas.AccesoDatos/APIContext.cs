@@ -5,7 +5,7 @@ namespace GAP.Polizas.AccesoDatos
 {
     public class APIContext:DbContext
     {
-        public APIContext() //: base("PolizasConnection")
+        public APIContext() : base("GAPPolizasEntities1")
         {
                
         }

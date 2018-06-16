@@ -25,13 +25,12 @@ namespace GAP.Polizas.LogicaNegocio
                     Poliza pol = new Poliza();
                     pol.Cobertura = poliza.Cobertura;
                     pol.Descripcion = poliza.Descripcion;
-                    pol.Id = poliza.Id;
+                    pol.IdPoliza = poliza.IdPoliza;
                     pol.InicioVigencia = poliza.InicioVigencia;
                     pol.Nombre = poliza.Nombre;
                     pol.Precio = poliza.Precio;
-                    pol.TipoCubrimiento = poliza.TipoCubrimiento;
+                    pol.TiposCubrimiento = poliza.TiposCubrimiento;
                     pol.Precio = poliza.Precio;
-                    pol.TipoRiesgo = poliza.TipoRiesgo;
                     listaPolizas.Add(pol);
                 }
             }
@@ -40,9 +39,9 @@ namespace GAP.Polizas.LogicaNegocio
         public bool EliminarPoliza(int id)
         {
             var polizaEliminar = contexto.polizas.Where(
-                x => x.Id == id).FirstOrDefault();
+                x => x.IdPoliza == id).FirstOrDefault();
             contexto.polizas.Remove(polizaEliminar);
-            return (contexto.SaveChanges() == 0 ? true : false);
+            return (contexto.SaveChanges() == 1 ? true : false);
         }
 
 

@@ -1,6 +1,8 @@
 ﻿using GAP.Polizas.ContratoLogicaNegocio;
 using GAP.Polizas.LogicaNegocio;
 using GAP.Polizas.Modelo;
+using System;
+using System.Collections.Generic;
 using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
@@ -16,18 +18,71 @@ namespace GAP.Polizas.WebAPI.Controllers
         {
             this.ipoliza = poliza;
         }
-
+        [HttpPost]
+        [Route("guardarPoliza")]
         public async Task<HttpResponseMessage> GuardarPoliza(Poliza poliza)
         {
-            return Request.CreateResponse(HttpStatusCode.BadRequest, "");
+            bool respuesta = false;
+            Dictionary<string, string> mensajes = new Dictionary<string, string>();
+            try
+            {
+                respuesta = ipoliza.GuardarPoliza(poliza);
+            }
+            catch (Exception ex)
+            {
+                mensajes.Add("Message", ex.InnerException.Message);
+                return Request.CreateResponse(HttpStatusCode.BadRequest, "Error: " + ex.InnerException);
+            }
+            if (respuesta)
+            {
+                return Request.CreateResponse(HttpStatusCode.OK, "OK");
+            }
+            else
+            {
+                return Request.CreateResponse(HttpStatusCode.BadRequest, "Error");
+            }
         }
+        [HttpGet]
+        [Route("consultarPolizas")]
         public async Task<HttpResponseMessage> ConsultarPolizas()
         {
-            return Request.CreateResponse(HttpStatusCode.BadRequest, "");
+            Dictionary<string, string> mensajes = new Dictionary<string, string>();
+            var polizas = ipoliza.ConsultarPolizas();
+            if (polizas != null)
+            {
+                return Request.CreateResponse(HttpStatusCode.OK, polizas);
+
+            }
+            else
+            {
+                mensajes.Add("Message", "No se encontraron polizas");
+                return Request.CreateResponse(HttpStatusCode.OK, polizas);
+
+            }
         }
+        [HttpDelete]
+        [Route("eliminarPoliza")]
         public async Task<HttpResponseMessage> EliminarPoliza(int id)
         {
-            return Request.CreateResponse(HttpStatusCode.BadRequest, "");
+            bool respuesta = false;
+            Dictionary<string, string> mensajes = new Dictionary<string, string>();
+            try
+            {
+                respuesta = ipoliza.EliminarPoliza(id);
+            }
+            catch (Exception ex)
+            {
+                mensajes.Add("Message", ex.InnerException.Message);
+                return Request.CreateResponse(HttpStatusCode.BadRequest, "Error: " + ex.InnerException);
+            }
+            if (respuesta)
+            {
+                return Request.CreateResponse(HttpStatusCode.OK, "OK");
+            }
+            else
+            {
+                return Request.CreateResponse(HttpStatusCode.BadRequest, "Error");
+            }
         }
        
     }
