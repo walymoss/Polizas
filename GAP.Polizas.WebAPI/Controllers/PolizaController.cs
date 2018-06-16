@@ -18,6 +18,7 @@ namespace GAP.Polizas.WebAPI.Controllers
         {
             this.ipoliza = poliza;
         }
+        [Authorize]
         [HttpPost]
         [Route("guardarPoliza")]
         public async Task<HttpResponseMessage> GuardarPoliza(Poliza poliza)
@@ -42,6 +43,7 @@ namespace GAP.Polizas.WebAPI.Controllers
                 return Request.CreateResponse(HttpStatusCode.BadRequest, "Error");
             }
         }
+        [Authorize]
         [HttpGet]
         [Route("consultarPolizas")]
         public async Task<HttpResponseMessage> ConsultarPolizas()
@@ -60,6 +62,7 @@ namespace GAP.Polizas.WebAPI.Controllers
 
             }
         }
+        [Authorize]
         [HttpDelete]
         [Route("eliminarPoliza")]
         public async Task<HttpResponseMessage> EliminarPoliza(int id)

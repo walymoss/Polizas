@@ -11,9 +11,11 @@ namespace GAP.Polizas.Modelo
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class Poliza
     {
+        [Key]
         public int IdPoliza { get; set; }
         public string Nombre { get; set; }
         public string Descripcion { get; set; }

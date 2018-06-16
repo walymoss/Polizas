@@ -11,7 +11,8 @@ namespace GAP.Polizas.Modelo
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class Cliente
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -19,7 +20,7 @@ namespace GAP.Polizas.Modelo
         {
             this.Polizas = new HashSet<Poliza>();
         }
-    
+    [Key]
         public int IdCliente { get; set; }
         public string Nombre { get; set; }
     

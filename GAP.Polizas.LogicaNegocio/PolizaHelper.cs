@@ -29,7 +29,9 @@ namespace GAP.Polizas.LogicaNegocio
                     pol.InicioVigencia = poliza.InicioVigencia;
                     pol.Nombre = poliza.Nombre;
                     pol.Precio = poliza.Precio;
-                    pol.TiposCubrimiento = poliza.TiposCubrimiento;
+                    pol.IdCliente = poliza.IdCliente;
+                    pol.IdTipoCubrimiento = poliza.IdTipoCubrimiento;
+                    pol.IdTipoRiesgo = poliza.IdTipoRiesgo;
                     pol.Precio = poliza.Precio;
                     listaPolizas.Add(pol);
                 }
