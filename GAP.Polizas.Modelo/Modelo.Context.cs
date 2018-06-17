@@ -12,29 +12,28 @@ namespace GAP.Polizas.Modelo
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
-    using System.Data.Entity.ModelConfiguration.Conventions;
-
-    public partial class GAPPolizasEntities1 : DbContext
+    
+    public partial class Entities : DbContext
     {
-        public GAPPolizasEntities1()
-            : base("name=GAPPolizasEntities1")
+        public Entities()
+            : base("name=Entities")
         {
         }
     
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
-            modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
+            throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<Cliente> Clientes { get; set; }
-        public virtual DbSet<Poliza> Polizas { get; set; }
-        public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
-        public virtual DbSet<TiposCubrimiento> TiposCubrimiento { get; set; }
-        public virtual DbSet<TiposRiesgo> TiposRiesgo { get; set; }
         public virtual DbSet<C__MigrationHistory> C__MigrationHistory { get; set; }
         public virtual DbSet<AspNetRoles> AspNetRoles { get; set; }
         public virtual DbSet<AspNetUserClaims> AspNetUserClaims { get; set; }
         public virtual DbSet<AspNetUserLogins> AspNetUserLogins { get; set; }
         public virtual DbSet<AspNetUsers> AspNetUsers { get; set; }
+        public virtual DbSet<Cliente> Cliente { get; set; }
+        public virtual DbSet<Poliza> Poliza { get; set; }
+        public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
+        public virtual DbSet<TiposCubrimiento> TiposCubrimiento { get; set; }
+        public virtual DbSet<TiposRiesgo> TiposRiesgo { get; set; }
     }
 }

@@ -61,18 +61,18 @@
     <Property Name="AccessFailedCount" Type="int" Nullable="false" />
     <Property Name="UserName" Type="nvarchar" MaxLength="256" Nullable="false" />
   </EntityType>
-  <EntityType Name="Clientes">
+  <EntityType Name="Cliente">
     <Key>
       <PropertyRef Name="IdCliente" />
     </Key>
     <Property Name="IdCliente" Type="int" Nullable="false" />
     <Property Name="Nombre" Type="varchar" MaxLength="50" />
   </EntityType>
-  <EntityType Name="Polizas">
+  <EntityType Name="Poliza">
     <Key>
       <PropertyRef Name="IdPoliza" />
     </Key>
-    <Property Name="IdPoliza" Type="int" Nullable="false" />
+    <Property Name="IdPoliza" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Nombre" Type="varchar" MaxLength="50" />
     <Property Name="Descripcion" Type="varchar" MaxLength="50" />
     <Property Name="InicioVigencia" Type="date" />
@@ -163,38 +163,38 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_Polizas_Clientes">
-    <End Role="Clientes" Type="Self.Clientes" Multiplicity="0..1" />
-    <End Role="Polizas" Type="Self.Polizas" Multiplicity="*" />
+  <Association Name="FK_Poliza_Cliente">
+    <End Role="Cliente" Type="Self.Cliente" Multiplicity="0..1" />
+    <End Role="Poliza" Type="Self.Poliza" Multiplicity="*" />
     <ReferentialConstraint>
-      <Principal Role="Clientes">
+      <Principal Role="Cliente">
         <PropertyRef Name="IdCliente" />
       </Principal>
-      <Dependent Role="Polizas">
+      <Dependent Role="Poliza">
         <PropertyRef Name="IdCliente" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_Polizas_TipoCubrimiento">
+  <Association Name="FK_Poliza_TipoCubrimiento">
     <End Role="TiposCubrimiento" Type="Self.TiposCubrimiento" Multiplicity="0..1" />
-    <End Role="Polizas" Type="Self.Polizas" Multiplicity="*" />
+    <End Role="Poliza" Type="Self.Poliza" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="TiposCubrimiento">
         <PropertyRef Name="IdTipoCubrimiento" />
       </Principal>
-      <Dependent Role="Polizas">
+      <Dependent Role="Poliza">
         <PropertyRef Name="IdTipoCubrimiento" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_Polizas_TipoRiesgo">
+  <Association Name="FK_Poliza_TipoRiesgo">
     <End Role="TiposRiesgo" Type="Self.TiposRiesgo" Multiplicity="0..1" />
-    <End Role="Polizas" Type="Self.Polizas" Multiplicity="*" />
+    <End Role="Poliza" Type="Self.Poliza" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="TiposRiesgo">
         <PropertyRef Name="IdTipoRiesgo" />
       </Principal>
-      <Dependent Role="Polizas">
+      <Dependent Role="Poliza">
         <PropertyRef Name="IdTipoRiesgo" />
       </Dependent>
     </ReferentialConstraint>
@@ -206,8 +206,8 @@
     <EntitySet Name="AspNetUserLogins" EntityType="Self.AspNetUserLogins" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="AspNetUserRoles" EntityType="Self.AspNetUserRoles" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUsers" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="Clientes" EntityType="Self.Clientes" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="Polizas" EntityType="Self.Polizas" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Cliente" EntityType="Self.Cliente" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Poliza" EntityType="Self.Poliza" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="TiposCubrimiento" EntityType="Self.TiposCubrimiento" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="TiposRiesgo" EntityType="Self.TiposRiesgo" Schema="dbo" store:Type="Tables" />
@@ -227,17 +227,17 @@
       <End Role="AspNetUsers" EntitySet="AspNetUsers" />
       <End Role="AspNetUserRoles" EntitySet="AspNetUserRoles" />
     </AssociationSet>
-    <AssociationSet Name="FK_Polizas_Clientes" Association="Self.FK_Polizas_Clientes">
-      <End Role="Clientes" EntitySet="Clientes" />
-      <End Role="Polizas" EntitySet="Polizas" />
+    <AssociationSet Name="FK_Poliza_Cliente" Association="Self.FK_Poliza_Cliente">
+      <End Role="Cliente" EntitySet="Cliente" />
+      <End Role="Poliza" EntitySet="Poliza" />
     </AssociationSet>
-    <AssociationSet Name="FK_Polizas_TipoCubrimiento" Association="Self.FK_Polizas_TipoCubrimiento">
+    <AssociationSet Name="FK_Poliza_TipoCubrimiento" Association="Self.FK_Poliza_TipoCubrimiento">
       <End Role="TiposCubrimiento" EntitySet="TiposCubrimiento" />
-      <End Role="Polizas" EntitySet="Polizas" />
+      <End Role="Poliza" EntitySet="Poliza" />
     </AssociationSet>
-    <AssociationSet Name="FK_Polizas_TipoRiesgo" Association="Self.FK_Polizas_TipoRiesgo">
+    <AssociationSet Name="FK_Poliza_TipoRiesgo" Association="Self.FK_Poliza_TipoRiesgo">
       <End Role="TiposRiesgo" EntitySet="TiposRiesgo" />
-      <End Role="Polizas" EntitySet="Polizas" />
+      <End Role="Poliza" EntitySet="Poliza" />
     </AssociationSet>
   </EntityContainer>
 </Schema>

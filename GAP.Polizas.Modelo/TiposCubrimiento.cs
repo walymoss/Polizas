@@ -18,14 +18,13 @@ namespace GAP.Polizas.Modelo
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public TiposCubrimiento()
         {
-            this.Polizas = new HashSet<Poliza>();
+            this.Poliza = new HashSet<Poliza>();
         }
-
-        [Key]
+    [Key]
         public int IdTipoCubrimiento { get; set; }
         public string TipoCubrimiento { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Poliza> Polizas { get; set; }
+        public virtual ICollection<Poliza> Poliza { get; set; }
     }
 }

@@ -18,7 +18,6 @@ namespace GAP.Polizas.WebAPI.Controllers
         {
             this.ipoliza = poliza;
         }
-        [Authorize]
         [HttpPost]
         [Route("guardarPoliza")]
         public async Task<HttpResponseMessage> GuardarPoliza(Poliza poliza)
@@ -62,6 +61,27 @@ namespace GAP.Polizas.WebAPI.Controllers
 
             }
         }
+
+        [HttpGet]
+        [Route("consultarPoliza/{id}")]
+        public async Task<HttpResponseMessage> ConsultarPoliza(int id)
+        {
+            Dictionary<string, string> mensajes = new Dictionary<string, string>();
+            var polizas = ipoliza.ConsultarPoliza(id);
+            if (polizas != null)
+            {
+                return Request.CreateResponse(HttpStatusCode.OK, polizas);
+
+            }
+            else
+            {
+                mensajes.Add("Message", "No se encontró la póliza");
+                return Request.CreateResponse(HttpStatusCode.OK, polizas);
+
+            }
+        }
+
+
         [Authorize]
         [HttpDelete]
         [Route("eliminarPoliza")]

@@ -4,23 +4,23 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="e1a9ee683fc345b897d349a0418c83ed" Name="Diagram1">
+      <Diagram DiagramId="b4c7934484d4468eb2238a862bf56e33" Name="Diagram1">
+        <EntityTypeShape EntityType="GAPPolizasModel.C__MigrationHistory" Width="1.5" PointX="2.75" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="GAPPolizasModel.AspNetRoles" Width="1.5" PointX="5.75" PointY="2.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="GAPPolizasModel.AspNetUserClaims" Width="1.5" PointX="10.25" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="GAPPolizasModel.AspNetUserLogins" Width="1.5" PointX="10.25" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="GAPPolizasModel.AspNetUsers" Width="1.5" PointX="8" PointY="1.375" IsExpanded="true" />
         <EntityTypeShape EntityType="GAPPolizasModel.Cliente" Width="1.5" PointX="0.75" PointY="2" IsExpanded="true" />
         <EntityTypeShape EntityType="GAPPolizasModel.Poliza" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
-        <EntityTypeShape EntityType="GAPPolizasModel.sysdiagram" Width="1.5" PointX="5.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="GAPPolizasModel.TiposCubrimiento" Width="2.125" PointX="0.75" PointY="4.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="GAPPolizasModel.TiposRiesgo" Width="1.5" PointX="5.375" PointY="5.375" IsExpanded="true" />
-        <AssociationConnector Association="GAPPolizasModel.FK_Polizas_Clientes" ManuallyRouted="false" />
-        <AssociationConnector Association="GAPPolizasModel.FK_Polizas_TipoCubrimiento" ManuallyRouted="false" />
-        <AssociationConnector Association="GAPPolizasModel.FK_Polizas_TipoRiesgo" ManuallyRouted="false" />
-        <EntityTypeShape EntityType="GAPPolizasModel.C__MigrationHistory" Width="1.5" PointX="7.75" PointY="3.75" />
-        <EntityTypeShape EntityType="GAPPolizasModel.AspNetRoles" Width="1.5" PointX="0.75" PointY="9.5" />
-        <EntityTypeShape EntityType="GAPPolizasModel.AspNetUserClaims" Width="1.5" PointX="5.25" PointY="10.625" />
-        <EntityTypeShape EntityType="GAPPolizasModel.AspNetUserLogins" Width="1.5" PointX="5.25" PointY="8" />
-        <EntityTypeShape EntityType="GAPPolizasModel.AspNetUsers" Width="1.5" PointX="3" PointY="8.375" />
-        <AssociationConnector Association="GAPPolizasModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" />
-        <AssociationConnector Association="GAPPolizasModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" />
-        <AssociationConnector Association="GAPPolizasModel.AspNetUserRoles" />
+        <EntityTypeShape EntityType="GAPPolizasModel.sysdiagrams" Width="1.5" PointX="4.75" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="GAPPolizasModel.TiposCubrimiento" Width="1.5" PointX="0.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="GAPPolizasModel.TiposRiesgo" Width="1.5" PointX="0.75" PointY="8.125" IsExpanded="true" />
+        <AssociationConnector Association="GAPPolizasModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" ManuallyRouted="false" />
+        <AssociationConnector Association="GAPPolizasModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" ManuallyRouted="false" />
+        <AssociationConnector Association="GAPPolizasModel.FK_Poliza_Cliente" ManuallyRouted="false" />
+        <AssociationConnector Association="GAPPolizasModel.FK_Poliza_TipoCubrimiento" ManuallyRouted="false" />
+        <AssociationConnector Association="GAPPolizasModel.FK_Poliza_TipoRiesgo" ManuallyRouted="false" />
+        <AssociationConnector Association="GAPPolizasModel.AspNetUserRoles" ManuallyRouted="false" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

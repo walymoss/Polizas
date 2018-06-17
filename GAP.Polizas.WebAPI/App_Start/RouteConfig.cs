@@ -17,6 +17,11 @@ namespace GAP.Polizas.WebAPI
                 url: "{controller}/{action}/{id}",
                 defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
             );
+            //routes.MapRoute(
+            //    name: "Edit",
+            //    url: "{controller}"
+            //    defaults: new { controller = "Home" }
+            //    );
         }
     }
 }

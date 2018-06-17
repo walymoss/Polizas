@@ -11,8 +11,17 @@ namespace GAP.Polizas.LogicaNegocio
         APIContext contexto = new APIContext();
         public bool GuardarPoliza(Poliza poliza)
         {
-            contexto.polizas.Add(poliza);
-            return (contexto.SaveChanges() == 1 ? true : false);
+            if(poliza.IdPoliza != null)
+            {
+                contexto.Entry(poliza).State = System.Data.Entity.EntityState.Modified;
+                return (contexto.SaveChanges() == 1 ? true : false);
+            }
+            else
+            {
+                contexto.polizas.Add(poliza);
+                return (contexto.SaveChanges() == 1 ? true : false);
+            }
+            
         }
         public List<Poliza> ConsultarPolizas()
         {
@@ -46,7 +55,7 @@ namespace GAP.Polizas.LogicaNegocio
                 {
                     throw ex;
                 }
-                
+
             }
             return listaPolizas;
         }
@@ -56,6 +65,38 @@ namespace GAP.Polizas.LogicaNegocio
                 x => x.IdPoliza == id).FirstOrDefault();
             contexto.polizas.Remove(polizaEliminar);
             return (contexto.SaveChanges() == 1 ? true : false);
+        }
+
+        public Poliza ConsultarPoliza(int id)
+        {
+            Poliza polizaRespuesta = new Poliza();
+            var poliza = contexto.polizas.Where(x => x.IdPoliza == id).FirstOrDefault();
+            if (poliza != null)
+            {
+                try
+                {
+                    polizaRespuesta.Cobertura = poliza.Cobertura;
+                    polizaRespuesta.Descripcion = poliza.Descripcion;
+                    polizaRespuesta.IdPoliza = poliza.IdPoliza;
+                    polizaRespuesta.InicioVigencia = poliza.InicioVigencia;
+                    polizaRespuesta.Nombre = poliza.Nombre;
+                    polizaRespuesta.Precio = poliza.Precio;
+                    polizaRespuesta.PeriodoCobertura = poliza.PeriodoCobertura;
+                    polizaRespuesta.IdCliente = poliza.IdCliente;
+                    polizaRespuesta.IdTipoCubrimiento = poliza.IdTipoCubrimiento;
+                    polizaRespuesta.IdTipoRiesgo = poliza.IdTipoRiesgo;
+                    polizaRespuesta.Precio = poliza.Precio;
+                    polizaRespuesta.Cliente = poliza.Cliente;
+                    polizaRespuesta.TiposCubrimiento = poliza.TiposCubrimiento;
+                    polizaRespuesta.TiposRiesgo = poliza.TiposRiesgo;
+                }
+                catch (System.Exception ex)
+                {
+                    throw ex;
+                }
+
+            }
+            return polizaRespuesta;
         }
 
 

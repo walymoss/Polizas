@@ -7,6 +7,7 @@ namespace GAP.Polizas.ContratoLogicaNegocio
     {
         bool GuardarPoliza(Poliza poliza);
         List<Poliza> ConsultarPolizas();
+        Poliza ConsultarPoliza(int idPoliza);
         bool EliminarPoliza(int id);
         
     }

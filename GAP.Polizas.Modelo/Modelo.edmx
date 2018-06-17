@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="GAPPolizasModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="GAPPolizasModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="__MigrationHistory">
           <Key>
             <PropertyRef Name="MigrationId" />
@@ -66,18 +66,18 @@
           <Property Name="AccessFailedCount" Type="int" Nullable="false" />
           <Property Name="UserName" Type="nvarchar" MaxLength="256" Nullable="false" />
         </EntityType>
-        <EntityType Name="Clientes">
+        <EntityType Name="Cliente">
           <Key>
             <PropertyRef Name="IdCliente" />
           </Key>
           <Property Name="IdCliente" Type="int" Nullable="false" />
           <Property Name="Nombre" Type="varchar" MaxLength="50" />
         </EntityType>
-        <EntityType Name="Polizas">
+        <EntityType Name="Poliza">
           <Key>
             <PropertyRef Name="IdPoliza" />
           </Key>
-          <Property Name="IdPoliza" Type="int" Nullable="false" />
+          <Property Name="IdPoliza" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Nombre" Type="varchar" MaxLength="50" />
           <Property Name="Descripcion" Type="varchar" MaxLength="50" />
           <Property Name="InicioVigencia" Type="date" />
@@ -168,38 +168,38 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Polizas_Clientes">
-          <End Role="Clientes" Type="Self.Clientes" Multiplicity="0..1" />
-          <End Role="Polizas" Type="Self.Polizas" Multiplicity="*" />
+        <Association Name="FK_Poliza_Cliente">
+          <End Role="Cliente" Type="Self.Cliente" Multiplicity="0..1" />
+          <End Role="Poliza" Type="Self.Poliza" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Clientes">
+            <Principal Role="Cliente">
               <PropertyRef Name="IdCliente" />
             </Principal>
-            <Dependent Role="Polizas">
+            <Dependent Role="Poliza">
               <PropertyRef Name="IdCliente" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Polizas_TipoCubrimiento">
+        <Association Name="FK_Poliza_TipoCubrimiento">
           <End Role="TiposCubrimiento" Type="Self.TiposCubrimiento" Multiplicity="0..1" />
-          <End Role="Polizas" Type="Self.Polizas" Multiplicity="*" />
+          <End Role="Poliza" Type="Self.Poliza" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="TiposCubrimiento">
               <PropertyRef Name="IdTipoCubrimiento" />
             </Principal>
-            <Dependent Role="Polizas">
+            <Dependent Role="Poliza">
               <PropertyRef Name="IdTipoCubrimiento" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Polizas_TipoRiesgo">
+        <Association Name="FK_Poliza_TipoRiesgo">
           <End Role="TiposRiesgo" Type="Self.TiposRiesgo" Multiplicity="0..1" />
-          <End Role="Polizas" Type="Self.Polizas" Multiplicity="*" />
+          <End Role="Poliza" Type="Self.Poliza" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="TiposRiesgo">
               <PropertyRef Name="IdTipoRiesgo" />
             </Principal>
-            <Dependent Role="Polizas">
+            <Dependent Role="Poliza">
               <PropertyRef Name="IdTipoRiesgo" />
             </Dependent>
           </ReferentialConstraint>
@@ -211,8 +211,8 @@
           <EntitySet Name="AspNetUserLogins" EntityType="Self.AspNetUserLogins" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="AspNetUserRoles" EntityType="Self.AspNetUserRoles" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUsers" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Clientes" EntityType="Self.Clientes" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Polizas" EntityType="Self.Polizas" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Cliente" EntityType="Self.Cliente" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Poliza" EntityType="Self.Poliza" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TiposCubrimiento" EntityType="Self.TiposCubrimiento" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TiposRiesgo" EntityType="Self.TiposRiesgo" Schema="dbo" store:Type="Tables" />
@@ -232,36 +232,96 @@
             <End Role="AspNetUsers" EntitySet="AspNetUsers" />
             <End Role="AspNetUserRoles" EntitySet="AspNetUserRoles" />
           </AssociationSet>
-          <AssociationSet Name="FK_Polizas_Clientes" Association="Self.FK_Polizas_Clientes">
-            <End Role="Clientes" EntitySet="Clientes" />
-            <End Role="Polizas" EntitySet="Polizas" />
+          <AssociationSet Name="FK_Poliza_Cliente" Association="Self.FK_Poliza_Cliente">
+            <End Role="Cliente" EntitySet="Cliente" />
+            <End Role="Poliza" EntitySet="Poliza" />
           </AssociationSet>
-          <AssociationSet Name="FK_Polizas_TipoCubrimiento" Association="Self.FK_Polizas_TipoCubrimiento">
+          <AssociationSet Name="FK_Poliza_TipoCubrimiento" Association="Self.FK_Poliza_TipoCubrimiento">
             <End Role="TiposCubrimiento" EntitySet="TiposCubrimiento" />
-            <End Role="Polizas" EntitySet="Polizas" />
+            <End Role="Poliza" EntitySet="Poliza" />
           </AssociationSet>
-          <AssociationSet Name="FK_Polizas_TipoRiesgo" Association="Self.FK_Polizas_TipoRiesgo">
+          <AssociationSet Name="FK_Poliza_TipoRiesgo" Association="Self.FK_Poliza_TipoRiesgo">
             <End Role="TiposRiesgo" EntitySet="TiposRiesgo" />
-            <End Role="Polizas" EntitySet="Polizas" />
+            <End Role="Poliza" EntitySet="Poliza" />
           </AssociationSet>
         </EntityContainer>
-      </Schema></edmx:StorageModels>
+      </Schema>
+    </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="GAPPolizasModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="C__MigrationHistory">
+          <Key>
+            <PropertyRef Name="MigrationId" />
+            <PropertyRef Name="ContextKey" />
+          </Key>
+          <Property Name="MigrationId" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ContextKey" Type="String" MaxLength="300" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Model" Type="Binary" MaxLength="Max" FixedLength="false" Nullable="false" />
+          <Property Name="ProductVersion" Type="String" MaxLength="32" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AspNetRoles">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="AspNetUsers" Relationship="Self.AspNetUserRoles" FromRole="AspNetRoles" ToRole="AspNetUsers" />
+        </EntityType>
+        <EntityType Name="AspNetUserClaims">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ClaimType" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ClaimValue" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="AspNetUsers" Relationship="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" FromRole="AspNetUserClaims" ToRole="AspNetUsers" />
+        </EntityType>
+        <EntityType Name="AspNetUserLogins">
+          <Key>
+            <PropertyRef Name="LoginProvider" />
+            <PropertyRef Name="ProviderKey" />
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="LoginProvider" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ProviderKey" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="UserId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="AspNetUsers" Relationship="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" FromRole="AspNetUserLogins" ToRole="AspNetUsers" />
+        </EntityType>
+        <EntityType Name="AspNetUsers">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Email" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="EmailConfirmed" Type="Boolean" Nullable="false" />
+          <Property Name="PasswordHash" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="SecurityStamp" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PhoneNumber" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PhoneNumberConfirmed" Type="Boolean" Nullable="false" />
+          <Property Name="TwoFactorEnabled" Type="Boolean" Nullable="false" />
+          <Property Name="LockoutEndDateUtc" Type="DateTime" Precision="3" />
+          <Property Name="LockoutEnabled" Type="Boolean" Nullable="false" />
+          <Property Name="AccessFailedCount" Type="Int32" Nullable="false" />
+          <Property Name="UserName" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="AspNetUserClaims" Relationship="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" FromRole="AspNetUsers" ToRole="AspNetUserClaims" />
+          <NavigationProperty Name="AspNetUserLogins" Relationship="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" FromRole="AspNetUsers" ToRole="AspNetUserLogins" />
+          <NavigationProperty Name="AspNetRoles" Relationship="Self.AspNetUserRoles" FromRole="AspNetUsers" ToRole="AspNetRoles" />
+        </EntityType>
         <EntityType Name="Cliente">
           <Key>
             <PropertyRef Name="IdCliente" />
           </Key>
           <Property Name="IdCliente" Type="Int32" Nullable="false" />
           <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="Polizas" Relationship="Self.FK_Polizas_Clientes" FromRole="Clientes" ToRole="Polizas" />
+          <NavigationProperty Name="Poliza" Relationship="Self.FK_Poliza_Cliente" FromRole="Cliente" ToRole="Poliza" />
         </EntityType>
         <EntityType Name="Poliza">
           <Key>
             <PropertyRef Name="IdPoliza" />
           </Key>
-          <Property Name="IdPoliza" Type="Int32" Nullable="false" />
+          <Property Name="IdPoliza" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="Descripcion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="InicioVigencia" Type="DateTime" Precision="0" />
@@ -271,11 +331,11 @@
           <Property Name="IdTipoCubrimiento" Type="Int32" />
           <Property Name="IdCliente" Type="Int32" />
           <Property Name="IdTipoRiesgo" Type="Int32" />
-          <NavigationProperty Name="Cliente" Relationship="Self.FK_Polizas_Clientes" FromRole="Polizas" ToRole="Clientes" />
-          <NavigationProperty Name="TiposCubrimiento" Relationship="Self.FK_Polizas_TipoCubrimiento" FromRole="Polizas" ToRole="TiposCubrimiento" />
-          <NavigationProperty Name="TiposRiesgo" Relationship="Self.FK_Polizas_TipoRiesgo" FromRole="Polizas" ToRole="TiposRiesgo" />
+          <NavigationProperty Name="Cliente" Relationship="Self.FK_Poliza_Cliente" FromRole="Poliza" ToRole="Cliente" />
+          <NavigationProperty Name="TiposCubrimiento" Relationship="Self.FK_Poliza_TipoCubrimiento" FromRole="Poliza" ToRole="TiposCubrimiento" />
+          <NavigationProperty Name="TiposRiesgo" Relationship="Self.FK_Poliza_TipoRiesgo" FromRole="Poliza" ToRole="TiposRiesgo" />
         </EntityType>
-        <EntityType Name="sysdiagram">
+        <EntityType Name="sysdiagrams">
           <Key>
             <PropertyRef Name="diagram_id" />
           </Key>
@@ -291,7 +351,7 @@
           </Key>
           <Property Name="IdTipoCubrimiento" Type="Int32" Nullable="false" />
           <Property Name="TipoCubrimiento" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="Polizas" Relationship="Self.FK_Polizas_TipoCubrimiento" FromRole="TiposCubrimiento" ToRole="Polizas" />
+          <NavigationProperty Name="Poliza" Relationship="Self.FK_Poliza_TipoCubrimiento" FromRole="TiposCubrimiento" ToRole="Poliza" />
         </EntityType>
         <EntityType Name="TiposRiesgo">
           <Key>
@@ -299,144 +359,13 @@
           </Key>
           <Property Name="IdTipoRiesgo" Type="Int32" Nullable="false" />
           <Property Name="TipoRiesgo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="Polizas" Relationship="Self.FK_Polizas_TipoRiesgo" FromRole="TiposRiesgo" ToRole="Polizas" />
-        </EntityType>
-        <Association Name="FK_Polizas_Clientes">
-          <End Role="Clientes" Type="Self.Cliente" Multiplicity="0..1" />
-          <End Role="Polizas" Type="Self.Poliza" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Clientes">
-              <PropertyRef Name="IdCliente" />
-            </Principal>
-            <Dependent Role="Polizas">
-              <PropertyRef Name="IdCliente" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Polizas_TipoCubrimiento">
-          <End Role="TiposCubrimiento" Type="Self.TiposCubrimiento" Multiplicity="0..1" />
-          <End Role="Polizas" Type="Self.Poliza" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="TiposCubrimiento">
-              <PropertyRef Name="IdTipoCubrimiento" />
-            </Principal>
-            <Dependent Role="Polizas">
-              <PropertyRef Name="IdTipoCubrimiento" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Polizas_TipoRiesgo">
-          <End Role="TiposRiesgo" Type="Self.TiposRiesgo" Multiplicity="0..1" />
-          <End Role="Polizas" Type="Self.Poliza" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="TiposRiesgo">
-              <PropertyRef Name="IdTipoRiesgo" />
-            </Principal>
-            <Dependent Role="Polizas">
-              <PropertyRef Name="IdTipoRiesgo" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <EntityContainer Name="GAPPolizasEntities1" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="Clientes" EntityType="Self.Cliente" />
-          <EntitySet Name="Polizas" EntityType="Self.Poliza" />
-          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
-          <EntitySet Name="TiposCubrimiento" EntityType="Self.TiposCubrimiento" />
-          <EntitySet Name="TiposRiesgo" EntityType="Self.TiposRiesgo" />
-          <AssociationSet Name="FK_Polizas_Clientes" Association="Self.FK_Polizas_Clientes">
-            <End Role="Clientes" EntitySet="Clientes" />
-            <End Role="Polizas" EntitySet="Polizas" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Polizas_TipoCubrimiento" Association="Self.FK_Polizas_TipoCubrimiento">
-            <End Role="TiposCubrimiento" EntitySet="TiposCubrimiento" />
-            <End Role="Polizas" EntitySet="Polizas" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Polizas_TipoRiesgo" Association="Self.FK_Polizas_TipoRiesgo">
-            <End Role="TiposRiesgo" EntitySet="TiposRiesgo" />
-            <End Role="Polizas" EntitySet="Polizas" />
-          </AssociationSet>
-          <EntitySet Name="C__MigrationHistory" EntityType="GAPPolizasModel.C__MigrationHistory" />
-          <EntitySet Name="AspNetRoles" EntityType="GAPPolizasModel.AspNetRoles" />
-          <EntitySet Name="AspNetUserClaims" EntityType="GAPPolizasModel.AspNetUserClaims" />
-          <EntitySet Name="AspNetUserLogins" EntityType="GAPPolizasModel.AspNetUserLogins" />
-          <EntitySet Name="AspNetUsers" EntityType="GAPPolizasModel.AspNetUsers" />
-          <AssociationSet Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" Association="GAPPolizasModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
-            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
-            <End Role="AspNetUserClaims" EntitySet="AspNetUserClaims" />
-          </AssociationSet>
-          <AssociationSet Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" Association="GAPPolizasModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
-            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
-            <End Role="AspNetUserLogins" EntitySet="AspNetUserLogins" />
-          </AssociationSet>
-          <AssociationSet Name="AspNetUserRoles" Association="GAPPolizasModel.AspNetUserRoles">
-            <End Role="AspNetRoles" EntitySet="AspNetRoles" />
-            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
-          </AssociationSet>
-        </EntityContainer>
-        <EntityType Name="C__MigrationHistory">
-          <Key>
-            <PropertyRef Name="MigrationId" />
-            <PropertyRef Name="ContextKey" />
-          </Key>
-          <Property Name="MigrationId" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="true" />
-          <Property Name="ContextKey" Type="String" Nullable="false" MaxLength="300" FixedLength="false" Unicode="true" />
-          <Property Name="Model" Type="Binary" Nullable="false" MaxLength="Max" FixedLength="false" />
-          <Property Name="ProductVersion" Type="String" Nullable="false" MaxLength="32" FixedLength="false" Unicode="true" />
-        </EntityType>
-        <EntityType Name="AspNetRoles">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
-          <Property Name="Name" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="AspNetUsers" Relationship="GAPPolizasModel.AspNetUserRoles" FromRole="AspNetRoles" ToRole="AspNetUsers" />
-        </EntityType>
-        <EntityType Name="AspNetUserClaims">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="UserId" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
-          <Property Name="ClaimType" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="ClaimValue" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="AspNetUsers" Relationship="GAPPolizasModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" FromRole="AspNetUserClaims" ToRole="AspNetUsers" />
-        </EntityType>
-        <EntityType Name="AspNetUserLogins">
-          <Key>
-            <PropertyRef Name="LoginProvider" />
-            <PropertyRef Name="ProviderKey" />
-            <PropertyRef Name="UserId" />
-          </Key>
-          <Property Name="LoginProvider" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
-          <Property Name="ProviderKey" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
-          <Property Name="UserId" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="AspNetUsers" Relationship="GAPPolizasModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" FromRole="AspNetUserLogins" ToRole="AspNetUsers" />
-        </EntityType>
-        <EntityType Name="AspNetUsers">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
-          <Property Name="Email" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
-          <Property Name="EmailConfirmed" Type="Boolean" Nullable="false" />
-          <Property Name="PasswordHash" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="SecurityStamp" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="PhoneNumber" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="PhoneNumberConfirmed" Type="Boolean" Nullable="false" />
-          <Property Name="TwoFactorEnabled" Type="Boolean" Nullable="false" />
-          <Property Name="LockoutEndDateUtc" Type="DateTime" Precision="3" />
-          <Property Name="LockoutEnabled" Type="Boolean" Nullable="false" />
-          <Property Name="AccessFailedCount" Type="Int32" Nullable="false" />
-          <Property Name="UserName" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="AspNetUserClaims" Relationship="GAPPolizasModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" FromRole="AspNetUsers" ToRole="AspNetUserClaims" />
-          <NavigationProperty Name="AspNetUserLogins" Relationship="GAPPolizasModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" FromRole="AspNetUsers" ToRole="AspNetUserLogins" />
-          <NavigationProperty Name="AspNetRoles" Relationship="GAPPolizasModel.AspNetUserRoles" FromRole="AspNetUsers" ToRole="AspNetRoles" />
+          <NavigationProperty Name="Poliza" Relationship="Self.FK_Poliza_TipoRiesgo" FromRole="TiposRiesgo" ToRole="Poliza" />
         </EntityType>
         <Association Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
-          <End Type="GAPPolizasModel.AspNetUsers" Role="AspNetUsers" Multiplicity="1">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
             <OnDelete Action="Cascade" />
           </End>
-          <End Type="GAPPolizasModel.AspNetUserClaims" Role="AspNetUserClaims" Multiplicity="*" />
+          <End Role="AspNetUserClaims" Type="Self.AspNetUserClaims" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="AspNetUsers">
               <PropertyRef Name="Id" />
@@ -447,10 +376,10 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
-          <End Type="GAPPolizasModel.AspNetUsers" Role="AspNetUsers" Multiplicity="1">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
             <OnDelete Action="Cascade" />
           </End>
-          <End Type="GAPPolizasModel.AspNetUserLogins" Role="AspNetUserLogins" Multiplicity="*" />
+          <End Role="AspNetUserLogins" Type="Self.AspNetUserLogins" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="AspNetUsers">
               <PropertyRef Name="Id" />
@@ -460,27 +389,154 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="AspNetUserRoles">
-          <End Type="GAPPolizasModel.AspNetRoles" Role="AspNetRoles" Multiplicity="*" />
-          <End Type="GAPPolizasModel.AspNetUsers" Role="AspNetUsers" Multiplicity="*" />
+        <Association Name="FK_Poliza_Cliente">
+          <End Role="Cliente" Type="Self.Cliente" Multiplicity="0..1" />
+          <End Role="Poliza" Type="Self.Poliza" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cliente">
+              <PropertyRef Name="IdCliente" />
+            </Principal>
+            <Dependent Role="Poliza">
+              <PropertyRef Name="IdCliente" />
+            </Dependent>
+          </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Poliza_TipoCubrimiento">
+          <End Role="TiposCubrimiento" Type="Self.TiposCubrimiento" Multiplicity="0..1" />
+          <End Role="Poliza" Type="Self.Poliza" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TiposCubrimiento">
+              <PropertyRef Name="IdTipoCubrimiento" />
+            </Principal>
+            <Dependent Role="Poliza">
+              <PropertyRef Name="IdTipoCubrimiento" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Poliza_TipoRiesgo">
+          <End Role="TiposRiesgo" Type="Self.TiposRiesgo" Multiplicity="0..1" />
+          <End Role="Poliza" Type="Self.Poliza" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TiposRiesgo">
+              <PropertyRef Name="IdTipoRiesgo" />
+            </Principal>
+            <Dependent Role="Poliza">
+              <PropertyRef Name="IdTipoRiesgo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="AspNetUserRoles">
+          <End Role="AspNetRoles" Type="Self.AspNetRoles" Multiplicity="*" />
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="*" />
+        </Association>
+        <EntityContainer Name="Entities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="C__MigrationHistory" EntityType="Self.C__MigrationHistory" />
+          <EntitySet Name="AspNetRoles" EntityType="Self.AspNetRoles" />
+          <EntitySet Name="AspNetUserClaims" EntityType="Self.AspNetUserClaims" />
+          <EntitySet Name="AspNetUserLogins" EntityType="Self.AspNetUserLogins" />
+          <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUsers" />
+          <EntitySet Name="Cliente" EntityType="Self.Cliente" />
+          <EntitySet Name="Poliza" EntityType="Self.Poliza" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+          <EntitySet Name="TiposCubrimiento" EntityType="Self.TiposCubrimiento" />
+          <EntitySet Name="TiposRiesgo" EntityType="Self.TiposRiesgo" />
+          <AssociationSet Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserClaims" EntitySet="AspNetUserClaims" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserLogins" EntitySet="AspNetUserLogins" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Poliza_Cliente" Association="Self.FK_Poliza_Cliente">
+            <End Role="Cliente" EntitySet="Cliente" />
+            <End Role="Poliza" EntitySet="Poliza" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Poliza_TipoCubrimiento" Association="Self.FK_Poliza_TipoCubrimiento">
+            <End Role="TiposCubrimiento" EntitySet="TiposCubrimiento" />
+            <End Role="Poliza" EntitySet="Poliza" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Poliza_TipoRiesgo" Association="Self.FK_Poliza_TipoRiesgo">
+            <End Role="TiposRiesgo" EntitySet="TiposRiesgo" />
+            <End Role="Poliza" EntitySet="Poliza" />
+          </AssociationSet>
+          <AssociationSet Name="AspNetUserRoles" Association="Self.AspNetUserRoles">
+            <End Role="AspNetRoles" EntitySet="AspNetRoles" />
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+          </AssociationSet>
+        </EntityContainer>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="GAPPolizasModelStoreContainer" CdmEntityContainer="GAPPolizasEntities1">
-          <EntitySetMapping Name="Clientes">
+        <EntityContainerMapping StorageEntityContainer="GAPPolizasModelStoreContainer" CdmEntityContainer="Entities">
+          <EntitySetMapping Name="C__MigrationHistory">
+            <EntityTypeMapping TypeName="GAPPolizasModel.C__MigrationHistory">
+              <MappingFragment StoreEntitySet="__MigrationHistory">
+                <ScalarProperty Name="MigrationId" ColumnName="MigrationId" />
+                <ScalarProperty Name="ContextKey" ColumnName="ContextKey" />
+                <ScalarProperty Name="Model" ColumnName="Model" />
+                <ScalarProperty Name="ProductVersion" ColumnName="ProductVersion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AspNetRoles">
+            <EntityTypeMapping TypeName="GAPPolizasModel.AspNetRoles">
+              <MappingFragment StoreEntitySet="AspNetRoles">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AspNetUserClaims">
+            <EntityTypeMapping TypeName="GAPPolizasModel.AspNetUserClaims">
+              <MappingFragment StoreEntitySet="AspNetUserClaims">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="ClaimType" ColumnName="ClaimType" />
+                <ScalarProperty Name="ClaimValue" ColumnName="ClaimValue" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AspNetUserLogins">
+            <EntityTypeMapping TypeName="GAPPolizasModel.AspNetUserLogins">
+              <MappingFragment StoreEntitySet="AspNetUserLogins">
+                <ScalarProperty Name="LoginProvider" ColumnName="LoginProvider" />
+                <ScalarProperty Name="ProviderKey" ColumnName="ProviderKey" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AspNetUsers">
+            <EntityTypeMapping TypeName="GAPPolizasModel.AspNetUsers">
+              <MappingFragment StoreEntitySet="AspNetUsers">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="EmailConfirmed" ColumnName="EmailConfirmed" />
+                <ScalarProperty Name="PasswordHash" ColumnName="PasswordHash" />
+                <ScalarProperty Name="SecurityStamp" ColumnName="SecurityStamp" />
+                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+                <ScalarProperty Name="PhoneNumberConfirmed" ColumnName="PhoneNumberConfirmed" />
+                <ScalarProperty Name="TwoFactorEnabled" ColumnName="TwoFactorEnabled" />
+                <ScalarProperty Name="LockoutEndDateUtc" ColumnName="LockoutEndDateUtc" />
+                <ScalarProperty Name="LockoutEnabled" ColumnName="LockoutEnabled" />
+                <ScalarProperty Name="AccessFailedCount" ColumnName="AccessFailedCount" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Cliente">
             <EntityTypeMapping TypeName="GAPPolizasModel.Cliente">
-              <MappingFragment StoreEntitySet="Clientes">
+              <MappingFragment StoreEntitySet="Cliente">
                 <ScalarProperty Name="IdCliente" ColumnName="IdCliente" />
                 <ScalarProperty Name="Nombre" ColumnName="Nombre" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Polizas">
+          <EntitySetMapping Name="Poliza">
             <EntityTypeMapping TypeName="GAPPolizasModel.Poliza">
-              <MappingFragment StoreEntitySet="Polizas">
+              <MappingFragment StoreEntitySet="Poliza">
                 <ScalarProperty Name="IdPoliza" ColumnName="IdPoliza" />
                 <ScalarProperty Name="Nombre" ColumnName="Nombre" />
                 <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
@@ -495,7 +551,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="sysdiagrams">
-            <EntityTypeMapping TypeName="GAPPolizasModel.sysdiagram">
+            <EntityTypeMapping TypeName="GAPPolizasModel.sysdiagrams">
               <MappingFragment StoreEntitySet="sysdiagrams">
                 <ScalarProperty Name="name" ColumnName="name" />
                 <ScalarProperty Name="principal_id" ColumnName="principal_id" />
@@ -521,67 +577,12 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="C__MigrationHistory">
-            <EntityTypeMapping TypeName="GAPPolizasModel.C__MigrationHistory">
-              <MappingFragment StoreEntitySet="__MigrationHistory">
-                <ScalarProperty Name="ProductVersion" ColumnName="ProductVersion" />
-                <ScalarProperty Name="Model" ColumnName="Model" />
-                <ScalarProperty Name="ContextKey" ColumnName="ContextKey" />
-                <ScalarProperty Name="MigrationId" ColumnName="MigrationId" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="AspNetRoles">
-            <EntityTypeMapping TypeName="GAPPolizasModel.AspNetRoles">
-              <MappingFragment StoreEntitySet="AspNetRoles">
-                <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="AspNetUserClaims">
-            <EntityTypeMapping TypeName="GAPPolizasModel.AspNetUserClaims">
-              <MappingFragment StoreEntitySet="AspNetUserClaims">
-                <ScalarProperty Name="ClaimValue" ColumnName="ClaimValue" />
-                <ScalarProperty Name="ClaimType" ColumnName="ClaimType" />
-                <ScalarProperty Name="UserId" ColumnName="UserId" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="AspNetUserLogins">
-            <EntityTypeMapping TypeName="GAPPolizasModel.AspNetUserLogins">
-              <MappingFragment StoreEntitySet="AspNetUserLogins">
-                <ScalarProperty Name="UserId" ColumnName="UserId" />
-                <ScalarProperty Name="ProviderKey" ColumnName="ProviderKey" />
-                <ScalarProperty Name="LoginProvider" ColumnName="LoginProvider" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="AspNetUsers">
-            <EntityTypeMapping TypeName="GAPPolizasModel.AspNetUsers">
-              <MappingFragment StoreEntitySet="AspNetUsers">
-                <ScalarProperty Name="UserName" ColumnName="UserName" />
-                <ScalarProperty Name="AccessFailedCount" ColumnName="AccessFailedCount" />
-                <ScalarProperty Name="LockoutEnabled" ColumnName="LockoutEnabled" />
-                <ScalarProperty Name="LockoutEndDateUtc" ColumnName="LockoutEndDateUtc" />
-                <ScalarProperty Name="TwoFactorEnabled" ColumnName="TwoFactorEnabled" />
-                <ScalarProperty Name="PhoneNumberConfirmed" ColumnName="PhoneNumberConfirmed" />
-                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
-                <ScalarProperty Name="SecurityStamp" ColumnName="SecurityStamp" />
-                <ScalarProperty Name="PasswordHash" ColumnName="PasswordHash" />
-                <ScalarProperty Name="EmailConfirmed" ColumnName="EmailConfirmed" />
-                <ScalarProperty Name="Email" ColumnName="Email" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <AssociationSetMapping Name="AspNetUserRoles" TypeName="GAPPolizasModel.AspNetUserRoles" StoreEntitySet="AspNetUserRoles">
-            <EndProperty Name="AspNetUsers">
-              <ScalarProperty Name="Id" ColumnName="UserId" />
-            </EndProperty>
             <EndProperty Name="AspNetRoles">
               <ScalarProperty Name="Id" ColumnName="RoleId" />
+            </EndProperty>
+            <EndProperty Name="AspNetUsers">
+              <ScalarProperty Name="Id" ColumnName="UserId" />
             </EndProperty>
           </AssociationSetMapping>
         </EntityContainerMapping>
@@ -598,7 +599,7 @@
     <Options>
       <DesignerInfoPropertySet>
         <DesignerProperty Name="ValidateOnBuild" Value="true" />
-        <DesignerProperty Name="EnablePluralization" Value="False" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
         <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
         <DesignerProperty Name="UseLegacyProvider" Value="false" />
         <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
