@@ -7,7 +7,7 @@
 <h2>Polizas</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Crear nueva póliza", "Create")
 </p>
 <table class="table">
     <tr>
@@ -72,9 +72,9 @@
                 @Html.DisplayFor(modelItem => item.Cobertura)
             </td>
             <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.IdPoliza }) |
-                @Html.ActionLink("Details", "Details", new { id = item.IdPoliza }) |
-                @Html.ActionLink("Delete", "Delete", new { id = item.IdPoliza })
+                @Html.ActionLink("Editar Póliza", "Edit", new { id = item.IdPoliza }) |
+               @* @Html.ActionLink("Details", "Details", new { id = item.IdPoliza }) |*@
+                @Html.ActionLink("Eliminar Póliza", "Delete", new { id = item.IdPoliza })
             </td>
         </tr>
     }

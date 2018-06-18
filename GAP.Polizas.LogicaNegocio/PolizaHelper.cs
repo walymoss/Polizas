@@ -11,7 +11,7 @@ namespace GAP.Polizas.LogicaNegocio
         APIContext contexto = new APIContext();
         public bool GuardarPoliza(Poliza poliza)
         {
-            if(poliza.IdPoliza != null)
+            if(poliza.IdPoliza != 0)
             {
                 contexto.Entry(poliza).State = System.Data.Entity.EntityState.Modified;
                 return (contexto.SaveChanges() == 1 ? true : false);

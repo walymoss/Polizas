@@ -82,9 +82,8 @@ namespace GAP.Polizas.WebAPI.Controllers
         }
 
 
-        [Authorize]
         [HttpDelete]
-        [Route("eliminarPoliza")]
+        [Route("eliminarPoliza/{id}")]
         public async Task<HttpResponseMessage> EliminarPoliza(int id)
         {
             bool respuesta = false;

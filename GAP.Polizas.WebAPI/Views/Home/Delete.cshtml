@@ -1,0 +1,96 @@
+﻿@model GAP.Polizas.Modelo.Poliza
+
+@{
+    ViewBag.Title = "Eliminar Póliza";
+}
+
+<h2>Eliminar</h2>
+
+<h3>¿Está seguro que desea eliminar esta póliza?</h3>
+<div>
+    <h4>Poliza</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Cliente.Nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Cliente.Nombre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TiposCubrimiento.TipoCubrimiento)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TiposCubrimiento.TipoCubrimiento)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TiposRiesgo.TipoRiesgo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TiposRiesgo.TipoRiesgo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Nombre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Descripcion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Descripcion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.InicioVigencia)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.InicioVigencia)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PeriodoCobertura)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PeriodoCobertura)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Precio)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Precio)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Cobertura)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Cobertura)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Eliminar" class="btn btn-default" /> |
+            @Html.ActionLink("Volver al listado de Pólizas", "Index")
+        </div>
+    }
+</div>

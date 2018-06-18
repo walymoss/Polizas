@@ -19,6 +19,7 @@ namespace GAP.Polizas.WebAPI.Controllers
             var client = new HttpClient();
             var response = client.GetAsync("http://localhost:52855/api/poliza/consultarPolizas").Result;
             var polizas = response.Content.ReadAsAsync<IEnumerable<Poliza>>().Result;
+            //polizas
             return View(polizas);
         }
 
@@ -43,5 +44,42 @@ namespace GAP.Polizas.WebAPI.Controllers
             var response = client.PostAsync("http://localhost:52855/api/poliza/guardarPoliza", bytesPoliza).Result;
             return RedirectToAction("Index");
         }
+
+        public ActionResult Create()
+        {
+            ViewBag.Title = "Crear Póliza";
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult Create(Poliza pol)
+        {
+            var client = new HttpClient();
+            var polizaEnviar = JsonConvert.SerializeObject(pol);
+            var buffer = System.Text.Encoding.UTF8.GetBytes(polizaEnviar);
+            var bytesPoliza = new ByteArrayContent(buffer);
+
+            bytesPoliza.Headers.ContentType = new MediaTypeHeaderValue("application/json");
+            var response = client.PostAsync("http://localhost:52855/api/poliza/guardarPoliza", bytesPoliza).Result;
+            return RedirectToAction("Index");
+        }
+
+        public ActionResult Delete(int id)
+        {
+            ViewBag.Title = "Eliminar Póliza";
+            var client = new HttpClient();
+            var response = client.GetAsync("http://localhost:52855/api/poliza/consultarPoliza/" + id.ToString()).Result;
+            var poliza = response.Content.ReadAsAsync<Poliza>().Result;
+            return View(poliza);
+        }
+        [HttpPost]
+        public ActionResult Delete(int id, Poliza pol)
+        {
+            ViewBag.Title = "Eliminar Póliza";
+            var client = new HttpClient();
+            var response = client.DeleteAsync("http://localhost:52855/api/poliza/eliminarPoliza/" + id.ToString()).Result;
+            return RedirectToAction("Index");
+        }
+
     }
 }
